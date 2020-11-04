@@ -32,7 +32,10 @@
                        @endforeach
                    </tbody>
                </table>
-            </div>
+               <div class="d-flex justify-content-center">
+                   {{ $students->links() }}
+               </div>
+            </>
         </div>
     </div>
 @endsection

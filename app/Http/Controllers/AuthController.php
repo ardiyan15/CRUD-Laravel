@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('coba')->only('test');
-    }
-
     public function index()
     {
         return view('auth.login');
@@ -30,7 +25,6 @@ class AuthController extends Controller
         } else {
             return back()->withInput()->with('info', 'Username not valid');
         }
-
     }
 
     public function logout()

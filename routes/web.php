@@ -19,16 +19,13 @@ use App\Http\Controllers\AuthController;
 //     return view('welcome');
 // });
 
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'loginprocess']);
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/', [StudentController::class, 'index']);
+Route::get('/student/{student}', [StudentController::class, 'show']);
+Route::get('/create', [StudentController::class, 'create']);
+Route::post('/', [StudentController::class, 'store']);
+Route::get('/student/{student}/edit', [StudentController::class, 'edit']);
+Route::patch('/student/{student}', [StudentController::class, 'update']);
+Route::delete('/student/{student}', [StudentController::class, 'destroy']);
+Auth::routes();
 
-Route::redirect('/', '/login');
-
-Route::get('/', [StudentController::class, 'index'])->middleware('login');
-Route::get('/student/{student}', [StudentController::class, 'show'])->middleware('login');
-Route::get('/create', [StudentController::class, 'create'])->middleware('login');
-Route::post('/', [StudentController::class, 'store'])->middleware('login');
-Route::get('/student/{student}/edit', [StudentController::class, 'edit'])->middleware('login');
-Route::patch('/student/{student}', [StudentController::class, 'update'])->middleware('login');
-Route::delete('/student/{student}', [StudentController::class, 'destroy'])->middleware('login');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -18,10 +18,14 @@
                     <a class="nav-link" href="/create"> Add </a>
                 </li>
             </ul>
-            <ul class="navbar-nav text-right">
+            <ul class="navbar-nav right">
                 <li class="nav-item">
-                    <span class="text-light"> Hello, {{ session('username') }} </span>
-                    <a href="/logout" class="nav-link d-inline"> logout </a>
+                    <span class="text-light"> Hello, {{ Auth::user()->name }} </span>
+                    <a onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" href="{{ route('logout') }}" class="nav-link d-inline"> logout </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>
